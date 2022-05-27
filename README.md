@@ -1,6 +1,6 @@
 # Android Studio [蒲公英](https://www.pgyer.com)插件
 
-## 本插件的功能为讲APK文件上传至蒲公英。
+## 本插件的功能为将APK文件上传至蒲公英。
 
 ### 使用方法
 
