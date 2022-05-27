@@ -2,7 +2,7 @@
 
 ## 本插件的功能为讲APK文件上传至蒲公英。
 
-使用方法
+### 使用方法
 
 * 下载 **NewPgyPlugin.zip** 到本地。
 * 打开 **Android Studio** 打开 **File->Setting->Plugin** 。
