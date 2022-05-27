@@ -1,0 +1,39 @@
+<idea-plugin>
+    <id>com.cyx.UploadToPgyPlugin</id>
+    <version>1.2</version>
+    <name>UploadToPgyPlugin</name>
+    <vendor email="1056673332@qq.com" url="https://github.com/singledog">cyx</vendor>
+
+    <description><![CDATA[
+    Just a apk tool.<br>
+    <em>Created by CYX at Taiyuan</em>
+    ]]></description>
+
+    <change-notes><![CDATA[
+           添加密码记录功能.<br>
+      <em>增加取消上传功能</em>
+  ]]>
+    </change-notes>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="192" until-build="213.*"/>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.lang</depends>
+<!--    <depends>com.intellij.modules.androidstudio</depends>-->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+        <action id="UploadApkToPgy" class="com.cyx.UploadToPgyPlugin.UploadApk" text="UploadApk"
+                description="Upload Apk file to pgy.com">
+            <add-to-group group-id="RefactoringMenu" anchor="first"/>
+        </action>
+    </actions>
+
+</idea-plugin>
