@@ -12,7 +12,9 @@ import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.progress.Task;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.InputValidator;
 import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.util.NlsSafe;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
 import okhttp3.*;
@@ -31,8 +33,7 @@ import java.util.concurrent.TimeUnit;
 public class UploadApk extends AnAction {
 
 
-    private static final OkHttpClient okHttpClient = new OkHttpClient.Builder()
-            .readTimeout(100, TimeUnit.SECONDS)//设置读取超时时间
+    private static final OkHttpClient okHttpClient = new OkHttpClient.Builder().readTimeout(100, TimeUnit.SECONDS)//设置读取超时时间
             .writeTimeout(100, TimeUnit.SECONDS)//设置写的超时时间
             .connectTimeout(100, TimeUnit.SECONDS)//设置连接超时时间
             .build();
@@ -51,10 +52,27 @@ public class UploadApk extends AnAction {
 //                propertiesComponent.setValue("api_key", "");
 //            }
 
-            String api_key = Messages.showInputDialog(project, "Please input your API KEY",
-                    "Input your api key",
-                    Messages.getQuestionIcon(), propertiesComponent.getValue("api_key"), null
-            );
+            String api_key = Messages.showInputDialog(project, "Please input your API KEY", "Input your api key",
+                    Messages.getQuestionIcon(), propertiesComponent.getValue("api_key"), new InputValidator() {
+                @Override
+                public boolean checkInput(@NlsSafe String s) {
+                    if (s==null || s.trim().isEmpty()) {
+                        return false;
+                    }
+                    return true;
+                }
+
+                @Override
+                public boolean canClose(@NlsSafe String s) {
+                    return true;
+                }
+            });
+
+            if (api_key==null || api_key.isEmpty()) {
+                return;
+            }
+
+
             propertiesComponent.setValue("api_key", api_key);
             String packageName = "";
             String password = "";
@@ -68,10 +86,17 @@ public class UploadApk extends AnAction {
                 password = propertiesComponent.getValue("password");
             }
 
-            String pw = Messages.showInputDialog(project, "Please input your PASSWORD",
-                    "Input your password",
-                    Messages.getQuestionIcon(), password, null
-            );
+            String pw = Messages.showInputDialog(project, "Please input your PASSWORD", "Input your password(Nullable)", Messages.getQuestionIcon(), password, new InputValidator() {
+                @Override
+                public boolean checkInput(@NlsSafe String s) {
+                    return true;
+                }
+
+                @Override
+                public boolean canClose(@NlsSafe String s) {
+                    return true;
+                }
+            });
 
             propertiesComponent.setValue("password", pw);
 
@@ -103,10 +128,8 @@ public class UploadApk extends AnAction {
                         builder.addFormDataPart("buildPassword", pw);
                     }
                     RequestBody requestBody = builder.build();
-                    Request request = new Request.Builder()
-                            .url("https://www.pgyer.com/apiv2/app/upload") //地址
-                            .post(requestBody)
-                            .build();
+                    Request request = new Request.Builder().url("https://www.pgyer.com/apiv2/app/upload") //地址
+                            .post(requestBody).build();
                     Response response = null;
                     try {
                         call = okHttpClient.newCall(request);
@@ -158,8 +181,7 @@ public class UploadApk extends AnAction {
     }
 
 
-    public static RequestBody createCustomRequestBody(final MediaType contentType, final File file,
-                                                      final ProgressListener listener) {
+    public static RequestBody createCustomRequestBody(final MediaType contentType, final File file, final ProgressListener listener) {
         return new RequestBody() {
             @Override
             public MediaType contentType() {
