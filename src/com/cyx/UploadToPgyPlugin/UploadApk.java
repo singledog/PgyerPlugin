@@ -33,9 +33,10 @@ import java.util.concurrent.TimeUnit;
 public class UploadApk extends AnAction {
 
 
-    private static final OkHttpClient okHttpClient = new OkHttpClient.Builder().readTimeout(100, TimeUnit.SECONDS)//设置读取超时时间
-            .writeTimeout(100, TimeUnit.SECONDS)//设置写的超时时间
-            .connectTimeout(100, TimeUnit.SECONDS)//设置连接超时时间
+    private static final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+            .readTimeout(100, TimeUnit.SECONDS)//设置读取超时时间
+            .writeTimeout(100, TimeUnit.SECONDS)
+            .connectTimeout(100, TimeUnit.SECONDS)
             .build();
 
     private Call call;
@@ -169,7 +170,6 @@ public class UploadApk extends AnAction {
         PsiFile currentEditorFile = e.getData(PlatformDataKeys.PSI_FILE);
         if (currentEditorFile != null) {
             String currentEditorFileName = currentEditorFile.getName();
-            String fileName = currentEditorFileName;
             if (currentEditorFileName.endsWith(".apk")) {
                 e.getPresentation().setEnabled(true);
             } else {
