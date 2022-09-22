@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.cyx.UploadToPgyPlugin</id>
-    <version>1.22</version>
+    <version>1.23</version>
     <name>UploadToPgyPlugin</name>
     <vendor email="1056673332@qq.com" url="https://github.com/singledog">cyx</vendor>
 
@@ -10,14 +10,14 @@
     ]]></description>
 
     <change-notes><![CDATA[
-           适配版本221+.<br>
+           适配版本222+.<br>
            添加密码记录功能.<br>
       <em>增加取消上传功能</em>
   ]]>
     </change-notes>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="212" until-build="221.*"/>
+    <idea-version since-build="212" until-build="222.*"/>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
