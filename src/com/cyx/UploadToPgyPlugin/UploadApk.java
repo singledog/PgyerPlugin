@@ -114,7 +114,7 @@ public class UploadApk extends AnAction {
                         public void onProgress(long totalBytes, long remainingBytes, boolean done) {
                             double progress = (totalBytes - remainingBytes) / (double) totalBytes;
                             progressIndicator.setFraction(progress);
-                            progressIndicator.setText(readableFileSize(totalBytes - remainingBytes) + "/" + readableFileSize(totalBytes) + "   " + (int) ((totalBytes - remainingBytes) * 100 / totalBytes) + "%");
+                            progressIndicator.setText(done?"Upload completed":readableFileSize(totalBytes - remainingBytes) + "/" + readableFileSize(totalBytes) + "   " + (int) ((totalBytes - remainingBytes) * 100 / totalBytes) + "%");
                             try {
                                 progressIndicator.checkCanceled();
                             } catch (ProcessCanceledException e) {
@@ -200,7 +200,7 @@ public class UploadApk extends AnAction {
                     source = Okio.source(file);
                     //sink.writeAll(source);
                     Buffer buf = new Buffer();
-                    Long remaining = contentLength();
+                    long remaining = contentLength();
                     for (long readCount; (readCount = source.read(buf, 2048)) != -1; ) {
                         sink.write(buf, readCount);
                         listener.onProgress(contentLength(), remaining -= readCount, remaining == 0);
