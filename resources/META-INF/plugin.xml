@@ -1,11 +1,12 @@
 <idea-plugin>
     <id>com.cyx.UploadToPgyPlugin</id>
-    <version>1.24</version>
-    <name>PgyerPlugin</name>
+    <version>2.0</version>
+    <name>ApkToPgyer</name>
     <vendor email="1056673332@qq.com" url="https://github.com/singledog">cyx</vendor>
 
     <description><![CDATA[
-    Just a apk tool.<br>
+    A tool for uploading APK file to pgyer.com.<br>
+    蒲公英APK上传工具.<br>
     <em>Created by CYX at Taiyuan</em>
     ]]></description>
 
@@ -15,7 +16,8 @@
     </change-notes>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-    <idea-version since-build="212" until-build="223.*"/>
+<!--    <idea-version since-build="212" until-build="223.*"/>-->
+    <idea-version since-build="212" />
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
@@ -30,7 +32,7 @@
     <actions>
         <!-- Add your actions here -->
         <action id="UploadApkToPgy" class="com.cyx.UploadToPgyPlugin.UploadApk" text="UploadApk"
-                description="Upload Apk file to pgy.com">
+                description="Uploading APK file to pgyer.com">
             <add-to-group group-id="RefactoringMenu" anchor="first"/>
         </action>
     </actions>
