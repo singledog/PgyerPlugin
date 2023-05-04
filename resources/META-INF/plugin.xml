@@ -1,29 +1,40 @@
 <idea-plugin>
     <id>com.cyx.UploadToPgyPlugin</id>
-    <version>2.0</version>
+    <version>2.2</version>
     <name>ApkToPgyer</name>
     <vendor email="1056673332@qq.com" url="https://github.com/singledog">cyx</vendor>
 
     <description><![CDATA[
-    A tool for uploading APK file to pgyer.com.<br>
+    A tool for uploading android APK file to pgyer.com.<br><br>
+    android APK file upload tool.<br>
+    <strong>Getting Started</strong>
+    Select the APK file and right click menu->Refactor->UploadApk<br>
+    Enter the <a href="https://www.pgyer.com/doc/view/api">API KEY</a> of the pgyer.com platform, enter the access password (optional), and click OK to upload. <br>
+    If the upload is successful, click OK to jump to the release success page. <br>
+
     蒲公英APK上传工具.<br>
-    <em>Created by CYX at Taiyuan</em>
+    <strong>开始使用</strong>
+    选中APK文件右键 menu->Refactor->UploadApk<br>
+    输入蒲公英平台的 <a href="https://www.pgyer.com/doc/view/api">API KEY</a>，输入访问密码(选填)，点击OK上传。<br>
+    上传成功可点击确定跳转至发布成功页面。<br>
+    <em>Created by <a href="https://github.com/singledog">CYX</a> at Taiyuan</em>
     ]]></description>
 
     <change-notes><![CDATA[
-           适配版本223+.<br>
+           适配版本Android Studio 最新版本.<br>
+           adapter Android Studio lastest version.<br>
   ]]>
     </change-notes>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-<!--    <idea-version since-build="212" until-build="223.*"/>-->
-    <idea-version since-build="212" />
+    <!--    <idea-version since-build="212" until-build="223.*"/>-->
+    <idea-version since-build="212"/>
 
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
     <depends>com.intellij.modules.lang</depends>
-<!--    <depends>com.intellij.modules.androidstudio</depends>-->
+    <!--    <depends>com.intellij.modules.androidstudio</depends>-->
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
