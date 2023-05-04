@@ -9,7 +9,7 @@
 * 点击 **设置** 图标选择 **Install Plugin from Disk** 。
 * 从本地选择 **NewPgyPlugin.zip** 安装。
 #### 插件商店获取
-* <iframe src="https://plugins.jetbrains.com/embeddable/install/20591" width="245px" height="48px"  frameborder="0" scrolling="no"> </iframe>
+* <iframe src="https://plugins.jetbrains.com/embeddable/install/20591" width="245px" height="48px"> </iframe>
 
 ### 使用方法
 * 选中 **APK** 文件右键 **Refactor->UploadApk** 。
